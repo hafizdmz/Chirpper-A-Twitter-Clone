@@ -18,8 +18,15 @@ function get_data(){
                blockquote.setAttribute("class", "blockquote mb-2 mt-2")
                const p = document.createElement("p")
                p.innerHTML = tweet.content
-               
-               blockquote.append(p)
+               const imgEl = document.createElement("img")
+               const imgAnchor = document.createElement("a")
+               imgAnchor.append(imgEl)
+               imgAnchor.setAttribute("href", tweet.image_path)
+               imgAnchor.setAttribute("download", tweet.image_path)
+               if(tweet.image_name != null){
+                 imgEl.setAttribute("src", tweet.image_path)
+               }
+               blockquote.append(p, imgAnchor)
                cardBody.append(blockquote)
                card.append(cardHeader, cardBody)
                tweetSection.append(card)
@@ -100,6 +107,29 @@ formTweet.addEventListener("submit", function(e){
   alertLoc.appendChild(divEl);
 
   
+})
+
+//upload File
+const formModal = document.getElementById("form-modal")
+formModal.addEventListener("submit", function(event){
+  event.preventDefault()
+
+  let xhr = new XMLHttpRequest();
+  let url = "http://127.0.0.1:5000/api/tweets"
+
+  let formData = new FormData()
+
+  const content = document.getElementById("tweets-modal").value
+  const file = document.getElementById("file")
+
+  formData.append('content', content)
+  formData.append('file', file.files[0])
+
+  xhr.open("POST", url, true)
+  // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+  xhr.setRequestHeader("Authorization", `Bearer ${localStorage.getItem('access_token')}`);
+  xhr.send(formData)
+
 })
 
 //UPLOAD FILES

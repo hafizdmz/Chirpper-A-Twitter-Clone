@@ -12,3 +12,7 @@ def register():
 @frontendBp.route("/")
 def home():
     return render_template('/home/index.html')
+
+@frontendBp.route("/leaderboard")
+def leaderboard():
+    return render_template('/home/leaderboard.html')
