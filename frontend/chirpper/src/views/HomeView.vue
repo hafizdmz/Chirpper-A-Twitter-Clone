@@ -1,4 +1,3 @@
-
 <template>
   <main class="grid grid-cols-3 gap-4">
     <div class="flex flex-col items-center ml-48 mt-5">
@@ -6,20 +5,27 @@
         <p class="text-4xl">Welcome,</p>
         <p class="text-4xl">@User</p>
         <Button @handle-click="toggleModal">
-          <i class="fa-solid fa-feather fa-sm"></i>
+          <font-awesome-icon icon="fa-solid fa-feather" />
           Start Chirpping!
         </Button>
       </div>
     </div>
-    <div class="flex flex-col items-center mt-10 border-l border-r border-gray-200">
+    <div
+      class="flex flex-col items-center mt-10 border-l border-r border-gray-200"
+    >
       <div class="flex flex-row gap-x-3">
         <!-- define better data for every items -->
-        <Card v-for=" item in data" :key="item.id" :tweet="item.content" :user="item.user" @toggle-like="toggleLike"/>  
+        <Card
+          v-for="item in data"
+          :key="item.id"
+          :tweet="item.content"
+          :user="item.user"
+        />
       </div>
       <div class="my-4">
         <Button>
-        <i class="fa-solid fa-spinner"></i>
-        Load More Chirpper!
+          <i class="fa-solid fa-spinner"></i>
+          Load More Chirpper!
         </Button>
       </div>
       <div>
@@ -28,22 +34,31 @@
             <div class="flex flex-col items-center">
               <TextArea id="textarea-input" label="" v-model="tweet" row="5" />
               <label for="uploadFile" class="mt-5">
-                <InputFile button-text="Upload Image" id="uploadBtn" v-model="uploadedFile" />
+                <InputFile
+                  button-text="Upload Image"
+                  id="uploadBtn"
+                  v-model="uploadedFile"
+                />
               </label>
             </div>
             <div class="flex flex-row space-x-2 mt-10">
-              <Button type="submit"
-                class="p-2 mt-3 rounded-md" @click="handleUploadFile">
-              Submit
+              <Button
+                type="submit"
+                class="p-2 mt-3 rounded-md"
+                @click="handleUploadFile"
+              >
+                Submit
               </Button>
-              <Button type="button"
-                class="p-2 mt-3 rounded-md" @click="toggleModal">
+              <Button
+                type="button"
+                class="p-2 mt-3 rounded-md"
+                @click="toggleModal"
+              >
                 Close
               </Button>
             </div>
           </Form>
         </ModalUpload>
-        
       </div>
     </div>
     <div class="mt-9">
@@ -52,25 +67,36 @@
       <li class="text-lg">@user4 commented on your post 5min ago</li>
       <li class="text-lg">@user28 just chirpping 12min ago</li>
       <li class="text-lg">@user7 liked your post 15min ago</li>
-
-      
     </div>
   </main>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import Card from '../components/Card.vue';
-import Button from '../components/Button.vue';
-import ModalUpload from '../components/ModalUpload.vue';
-import InputFile from '../components/InputFile.vue';
-import TextArea from '../components/TextAreaLabel.vue';
+import { ref, onMounted } from "vue";
+import Card from "../components/Card.vue";
+import Button from "../components/Button.vue";
+import ModalUpload from "../components/ModalUpload.vue";
+import InputFile from "../components/InputFile.vue";
+import TextArea from "../components/TextAreaLabel.vue";
+import Form from "../components/Form.vue";
 // import { useFetch } from '../composable/useAxios';
 
 const data = [
-    { 'user': 'user 1', 'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis ex gravida luctus mattis. Curabitur feugiat erat ex, sit amet gravida ligula pretium sit amet. In molestie tortor ut quam venenatis, id mattis purus eleifend.', 'id' : 1 },
+  {
+    user: "user 1",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis ex gravida luctus mattis. Curabitur feugiat erat ex, sit amet gravida ligula pretium sit amet. In molestie tortor ut quam venenatis, id mattis purus eleifend.",
+    id: 1,
+  },
+];
 
-]
+const uploadedFile = ref(null);
+let tweet = ref("");
+
+const handleUploadFile = () => {
+  console.log(tweet);
+  console.log(uploadedFile.value);
+};
 
 // const {tryFetching} = useFetch()
 
@@ -82,7 +108,6 @@ const data = [
 //   // console.log(result.data)
 //   data.value = result
 // }
-
 
 //like dislike toggle button
 // const toggleLike = (data) => {
@@ -117,9 +142,8 @@ const data = [
 //   handleFetching()
 // })
 
-const showModal = ref(false)
+const showModal = ref(false);
 const toggleModal = () => {
-  showModal.value = !showModal.value
-}
-
+  showModal.value = !showModal.value;
+};
 </script>

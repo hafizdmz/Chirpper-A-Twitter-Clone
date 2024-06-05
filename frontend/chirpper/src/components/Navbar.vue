@@ -2,7 +2,7 @@
     <header class='sticky top-0 bg-chirpper-gray shadow-lg'>
         <nav class="flex flex-row mx-52 items-center text-white py-6">
             <div class="flex items-center gap-3 flex-1">
-                <i class="fa-solid fa-feather fa-xl"></i>
+                <font-awesome-icon icon="fa-solid fa-feather" size="xl"/>
                 <p class=" text-2xl"> Chirpper</p>
             </div>
             <ul class="self-center space-x-5">
