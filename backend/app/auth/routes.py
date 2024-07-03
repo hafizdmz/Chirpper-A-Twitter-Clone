@@ -39,7 +39,7 @@ def registration():
         return jsonify({"error": error})
 
     response = make_response(jsonify({
-        "message":"Berhasil Login",
+        "message":"Berhasil daftar",
         }), 200)
     
     return response

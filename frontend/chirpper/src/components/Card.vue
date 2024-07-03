@@ -13,7 +13,7 @@
         <div class="flex justify-end gap-5">
           <font-awesome-icon icon="fa-solid fa-thumbs-up" size="xl" />
           <font-awesome-icon icon="fa-solid fa-thumbs-down" size="xl" />
-          <font-awesome-icon icon="fa-regular fa-comment" size="xl"/>
+          <font-awesome-icon icon="fa-regular fa-comment" size="xl" />
           <i class="fa-solid fa-thumbs-down"></i>
         </div>
       </div>
@@ -32,8 +32,6 @@
 </template>
 <script setup>
 defineProps(["user", "tweet", "imgPath", "imgName", "isLiked", "isDisliked"]);
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import { ref } from "vue";
 
